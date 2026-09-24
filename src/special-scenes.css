@@ -1,0 +1,145 @@
+/* Phase 4 — real 3D is intentionally limited to selected conceptual moments. */
+
+.global-atmosphere-fallback {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: radial-gradient(circle at 52% 52%, rgba(var(--accent-rgb), 0.12), transparent 34%);
+}
+
+.deck-shell:is(
+  [data-slide-id="cover"],
+  [data-slide-id="l03-conditions"],
+  [data-slide-id="f03-environment"],
+  [data-slide-id="f07-confirm-regression"],
+  [data-slide-id="closing"]
+) .global-atmosphere-canvas {
+  z-index: 18;
+  opacity: 1;
+}
+
+.deck-shell:is(
+  [data-slide-id="l03-conditions"],
+  [data-slide-id="f03-environment"],
+  [data-slide-id="f07-confirm-regression"]
+) .scene-visual-reveal {
+  z-index: 20;
+}
+
+/* The procedural core replaces only the previous flat reticle. */
+.deck-shell:is([data-slide-id="cover"], [data-slide-id="closing"]) .hero-core {
+  opacity: 0;
+}
+
+.cyber-core-status-reveal {
+  position: absolute;
+  right: 8vw;
+  bottom: 9vh;
+  z-index: 22;
+}
+
+.cyber-core-status {
+  display: grid;
+  justify-items: end;
+  gap: 0.35rem;
+  padding: 0.85rem 1rem 0.75rem 2.8rem;
+  border-right: 4px solid var(--cyan);
+  background: linear-gradient(90deg, transparent, rgba(2, 8, 12, 0.84));
+  text-align: right;
+}
+
+.cyber-core-status span,
+.cyber-core-status small {
+  font: 600 clamp(0.7rem, 0.72vw, 0.88rem)/1 var(--mono);
+  letter-spacing: 0.14em;
+}
+
+.cyber-core-status span { color: var(--cyan); }
+.cyber-core-status strong { font-size: clamp(1.1rem, 1.35vw, 1.7rem); color: var(--ink); }
+.cyber-core-status small { color: var(--yellow); }
+
+/* 13 — retain every condition label, remove only the duplicated flat wiring. */
+.deck-shell[data-slide-id="l03-conditions"] .requirement-neuron__wires {
+  opacity: 0.08;
+}
+
+.deck-shell[data-slide-id="l03-conditions"] :is(.condition-tree__root, .condition-leaf) {
+  background: rgba(2, 6, 10, 0.68);
+  box-shadow: 0 0 26px rgba(var(--accent-rgb), 0.08);
+  backdrop-filter: blur(2px);
+}
+
+/* 21 — technical plates remain nearly static; their Z separation is WebGL. */
+.deck-shell[data-slide-id="f03-environment"] .execution-fingerprint__layers {
+  opacity: 0.08;
+}
+
+.deck-shell[data-slide-id="f03-environment"] .environment-stack__layer {
+  background: linear-gradient(105deg, rgba(255, 50, 109, 0.08), rgba(2, 5, 9, 0.3));
+  backdrop-filter: blur(2px);
+}
+
+/* 25 — keep the labels and comparison panels; replace the flat orbit itself. */
+.deck-shell[data-slide-id="f07-confirm-regression"] .fix-cycle {
+  top: 62%;
+  border-color: transparent;
+}
+
+.deck-shell[data-slide-id="f07-confirm-regression"] .fix-cycle__anchor {
+  transform: translate(-50%, -50%)
+    rotate(calc(var(--i) * 1turn / var(--total)))
+    translateY(-9.4vw)
+    rotate(calc(var(--i) * -1turn / var(--total)));
+}
+
+.deck-shell[data-slide-id="f07-confirm-regression"] .fix-cycle__anchor:last-child {
+  translate: 0;
+}
+
+.deck-shell[data-slide-id="f07-confirm-regression"] .fix-cycle__icon {
+  opacity: 0.08;
+}
+
+.deck-shell[data-slide-id="f07-confirm-regression"] .fix-cycle__node {
+  background: rgba(2, 4, 7, 0.7);
+  box-shadow: 0 0 22px rgba(32, 221, 216, 0.1);
+  backdrop-filter: blur(2px);
+}
+
+.deck-shell[data-slide-id="f07-confirm-regression"] .retest-orbit__principle-reveal {
+  right: 5vw;
+  bottom: 9vh;
+  width: 35vw;
+}
+
+@supports selector(.deck-shell:has(.global-atmosphere-fallback)) {
+  .deck-shell:is([data-slide-id="cover"], [data-slide-id="closing"]):has(.global-atmosphere-fallback) .hero-core {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 900px) {
+  .deck-shell:is(
+    [data-slide-id="l03-conditions"],
+    [data-slide-id="f03-environment"]
+  ) .global-atmosphere-canvas {
+    opacity: 0.72;
+  }
+
+  .cyber-core-status-reveal {
+    right: 5vw;
+    bottom: 7vh;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .deck-shell:is(
+    [data-slide-id="cover"],
+    [data-slide-id="l03-conditions"],
+    [data-slide-id="f03-environment"],
+    [data-slide-id="f07-confirm-regression"],
+    [data-slide-id="closing"]
+  ) .global-atmosphere-canvas {
+    opacity: 0.76;
+  }
+}
